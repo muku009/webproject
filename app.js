@@ -6,7 +6,7 @@ const port  = process.env.port || 8080;
 
 const app  = express();
 
-mongoose.connect('mongodb://localhost:27017/admin',{useNewUrlParser:true})
+mongoose.connect('mongodb://localhost:27017/student',{useNewUrlParser:true})
 const db = mongoose.connection;
 
 db.on("error",()=>{console.log("error in conection");})
