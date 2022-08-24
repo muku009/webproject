@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const homerout= require('./rout/homerout')
-const port  = process.env.port || 8080;
+const port  = process.env.PORT || 8080;
 
 const app  = express();
 
