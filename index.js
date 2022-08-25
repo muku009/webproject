@@ -25,4 +25,6 @@ app.use(bodyParser.json())
 
 app.use('/', homeRouter)
 
-app.listen(port)
+app.listen(port, () => {
+console.log(`listen on port ${port}`);
+})
