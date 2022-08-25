@@ -1,29 +1,28 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const homerout= require('./rout/homerout')
-const port  = process.env.PORT || 8080;
+const homeRouter = require('./rout/homerout')
+const port  = process.env.port || 8080;
 
 const app  = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/student',{useNewUrlParser:true})
+// db con
+
+mongoose.connect('mongodb://localhost:27017/studentsdata',{useNewUrlParser:true})
 const db = mongoose.connection;
 
 db.on("error",()=>{console.log("error in conection");})
 db.once('open',()=>{console.log("Connected");})
 
-
-
-
 app.set('view engine','ejs')
 
 app.use(express.static('public'))
+
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
 
+app.use('/', homeRouter)
 
-app.use('/',homerout);
-
-app.listen(port);
+app.listen(port)
